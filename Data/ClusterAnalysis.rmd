@@ -1,0 +1,114 @@
+---
+title: "Untitled"
+output:
+  word_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(comment = NA)
+knitr::opts_chunk$set(error = TRUE)
+```
+
+```{r}
+library(jtools)
+library(car)
+library(glmnet)
+dat = read.csv('r_file.csv', stringsAsFactors = TRUE)
+dat$cluster_=as.factor(dat$cluster_)
+dat$Personnel = as.factor(dat$Personnel)
+print(head(dat))
+```
+
+```{r}
+anov1= aov(epa~cluster_, data=dat)
+#summary(anov1)
+```
+
+
+```{r}
+TukeyHSD(anov1, 'cluster_', conf.level=0.99)
+```
+```{r}
+data = read.csv('r_2_file.csv', stringsAsFactors = TRUE)
+print(head(data))
+data$cluster_=as.factor(data$cluster_)
+data$Personnel = as.factor(data$Personnel)
+```
+
+
+```{r}
+library(car)
+anov2 = lm(epa~cluster_+play_type_+cluster_:play_type_, data=dat)
+#anova(anov2)
+#lambda.fm1 <- boxcox(mydata$y ~ mydata$x1 + mydata$x2), family="yjPower")
+#lambda.max <- lambda.fm1$x[which.max(lambda.fm1$y)]
+#mydata$y = yjPower(mydata$y, lambda=lambda.max, jacobian.adjusted=FALSE)opt.lambda<-bc$x[which.max(bc$y)]
+summ(anov2)
+par(mfrow=c(2,2))
+plot(anov2$fitted.values, anov2$residuals, xlab = 'residuals', ylab='fitted values', main = 'Residuals vs. Fitted')
+qqnorm(anov2$residuals)
+qqline(anov2$residuals)
+hist(anov2$residuals, main = '', xlab='residuals')
+#dat$epa = dat$epa-min(dat$epa)+1
+#summ(anov2)
+#export_summs(anov2way, error_format="({p.value})", to.file='Word', file.name='Anova.doc')
+```
+
+```{r}
+data$epa = data$epa-min(data$epa)+1
+model2  = lm(epa~cluster_+play_type_+cluster_:play_type_, data=data)
+bc = boxCox(model2)
+opt.lambda = bc$x[which.max(bc$y)]
+# Round it to the nearest 0.5
+cat("Optimal lambda:", opt.lambda, end="\n")
+
+```
+
+
+```{r}
+anov3 = lm(epa**opt.lambda~cluster_+play_type_+cluster_:play_type_, data=data)
+summ(anov3)
+
+par(mfrow=c(2,2))
+plot(anov3$fitted.values, anov3$residuals, xlab = 'residuals', ylab='fitted values', main = 'Residuals vs. Fitted')
+qqnorm(anov3$residuals)
+qqline(anov3$residuals)
+hist(anov3$residuals, main = '', xlab='residuals')
+```
+
+
+```{r}
+library(glmnet)
+X =  model.matrix( ~ .-1, data[,-10])
+ridge.cv = cv.glmnet(X, data[,10], alpha=1, nfolds = 30)
+#print(ridge.cv$lambda.min)
+
+ridge.model <- glmnet(X, data[,10], alpha=1, nlambda = 100)
+coef(ridge.model, ridge.cv$lambda.min)
+
+```
+```{r}
+#dev.new(width=5, height=4)
+#plot(ridge.model,xvar="lambda",label=TRUE,lwd=2, main='Elastic Net Solution Path')
+#abline(v=log(ridge.cv$lambda.min),col='black',lty = 2,lwd=2)
+#plot(1:20)
+```
+```{r}
+n= nrow(dat)
+base_mod = lm(epa~1, data=data)
+full_mod = lm(epa~.+cluster_:play_type_, data=data)
+stepwise_model = step(base_mod, scope=list(lower=base_mod, upper=full_mod), direction="both", k=2, trace=F)
+summ(stepwise_model)
+```
+
+```{r}
+step(base_mod, scope=list(lower=base_mod, upper=full_mod), direction="both", k=2)
+```
+
+
+
+
+
+

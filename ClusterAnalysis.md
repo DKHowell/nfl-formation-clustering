@@ -6,17 +6,8 @@ Import libraries.
 ``` r
 library(jtools)
 library(car)
-```
-
-    Loading required package: carData
-
-``` r
 library(glmnet)
 ```
-
-    Loading required package: Matrix
-
-    Loaded glmnet 4.1-2
 
 Import and format csv file created with NFL\_defense\_clustering.ipynb
 

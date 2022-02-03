@@ -1,16 +1,13 @@
 # nfl-formation-clustering
 
-This project is an exploration of defensive player formations and their effect on play success using NFL olay-by-play and player tracking data. Player starting positions are transformed into low-dimensional embeddings and clustered.CLuster assignments and other features are then examined to determine their relationship with offensive play success. For a full report detailing the data, methodology, and results, please see https://github.com/DKHowell/nfl-formation-clustering/blob/main/NFL_Clustering_Report.pdf.
-
-## Description
-
-An in-depth paragraph about your project and overview of use.
+This project is an exploration of defensive player formations and their effect on play success using NFL olay-by-play and player tracking data. Player starting positions are transformed into low-dimensional embeddings and clustered. Cluster assignments and other features are then examined to determine their relationship with offensive play success. A full report detailing the data, methodology, and results can be found [here](https://github.com/DKHowell/nfl-formation-clustering/blob/main/NFL_Clustering_Report.pdf).
 
 ## Files
 
 1. all data can be found in https://github.com/DKHowell/nfl-formation-clustering/tree/main/Data
-2. Data cleaning, clustering, and initial exploration is performed in https://github.com/DKHowell/nfl-formation-clustering/blob/main/NFL_defense_clustering.ipynb
-3. Further analysis is performed using R in https://github.com/DKHowell/nfl-formation-clustering/blob/main/ClusterAnalysis.md
+2. Data cleaning, clustering, and initial exploration is performed in this [Jupyter notebook](https://github.com/DKHowell/nfl-formation-clustering/blob/main/NFL_defense_clustering.ipynb)
+3. Further analysis is performed using R [here](https://github.com/DKHowell/nfl-formation-clustering/blob/main/ClusterAnalysis.md)
+4. [Final report](https://github.com/DKHowell/nfl-formation-clustering/blob/main/NFL_Clustering_Report.pdf)
 
 ### Dependencies
 

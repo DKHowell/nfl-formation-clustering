@@ -1,4 +1,4 @@
-name: CDA
+name: nfl-clustering
 channels:
   - conda-forge
   - defaults

@@ -4,7 +4,7 @@ This project is an exploration of defensive player formations and their effect o
 
 ## Files
 
-1. all data can be found in https://github.com/DKHowell/nfl-formation-clustering/tree/main/Data
+1. Data can be found [here](https://github.com/DKHowell/nfl-formation-clustering/tree/main/Data)
 2. Data cleaning, clustering, and initial exploration is performed in this [Jupyter notebook](https://github.com/DKHowell/nfl-formation-clustering/blob/main/NFL_defense_clustering.ipynb)
 3. Further analysis is performed using R [here](https://github.com/DKHowell/nfl-formation-clustering/blob/main/ClusterAnalysis.md)
 4. [Final report](https://github.com/DKHowell/nfl-formation-clustering/blob/main/NFL_Clustering_Report.pdf)

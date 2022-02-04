@@ -1,6 +1,6 @@
 # nfl-formation-clustering
 
-This project is an exploration of defensive player formations and their effect on play success using NFL olay-by-play and player tracking data. Player starting positions are transformed into low-dimensional embeddings and clustered. Cluster assignments and other features are then examined to determine their relationship with offensive play success. A full report detailing the data, methodology, and results can be found [here](https://github.com/DKHowell/nfl-formation-clustering/blob/main/NFL_Clustering_Report.pdf).
+This project is an exploration of defensive player formations and their effect on play success using NFL play-by-play and player tracking data. Player starting positions are transformed into low-dimensional embeddings and clustered. Cluster assignments and other features are then examined to determine their relationship with offensive play success. A full report detailing the data, methodology, and results can be found [here](https://github.com/DKHowell/nfl-formation-clustering/blob/main/NFL_Clustering_Report.pdf).
 
 ## Files
 
